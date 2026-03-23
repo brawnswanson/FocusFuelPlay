@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct FocusFuelPlayApp: App {
+    
+    @State private var authorizationModel = AuthorizationModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(authorizationModel)
         }
+        .modelContainer(for: [FuelBalance.self, FuelTask.self])
     }
 }
